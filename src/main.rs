@@ -2,8 +2,20 @@ fn main() {
     print!("{}", process(String::from("hello MATMEX")));
 }
 
-fn process(_text: String) -> String {
-    todo!("исправьте владение и заимствования строки");
+fn process(text: String) -> String {
+    let mut text = text;
+    let mut result = String::new();
+    let first = match text.split_whitespace().next() {
+        Some(word) => word,
+        None => &text[0..0],
+    };
+    result.push_str(first);
+    result.push('\n');
+    result.push_str(&mut text);
+    result.push_str(" rust\n");
+    result.push_str(&text);
+    result.push_str(" rust\n");
+    result
 }
 
 #[cfg(test)]
